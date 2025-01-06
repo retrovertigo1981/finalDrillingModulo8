@@ -1,0 +1,11 @@
+{
+  "name": "finaldrillingmodulo8",
+  "version": "1.0.0",
+  "description": "Proyecto Final Modulo 8 Bootcamp JavaScript Talento Digital",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sebastián Peña <pjfanchile@gmail.com>",
+  "license": "ISC"
+}
