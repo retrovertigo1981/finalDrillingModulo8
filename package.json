@@ -1,7 +1,7 @@
 {
-  "name": "finalldrillingmodulo7",
+  "name": "finalldrillingmodulo8",
   "version": "1.0.0",
-  "description": "Final Drilling del Modulo 7 del Bootcamp Desarrollo FullStack JavaScript Talento Digital",
+  "description": "Final Drilling del Modulo 8 del Bootcamp Desarrollo FullStack JavaScript Talento Digital",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -12,8 +12,10 @@
   "dependencies": {
     "argon2": "^0.41.1",
     "body-parser": "^1.20.3",
+    "cookie-parser": "^1.4.7",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2",
     "pg": "^8.13.1",
     "pg-hstore": "^2.3.4",
     "sequelize": "^6.37.5"

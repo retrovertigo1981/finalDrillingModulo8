@@ -7,6 +7,7 @@ BootcampController = {};
 BootcampController.getAllBootcamps = async (req, res, next) => {
   try {
     const bootcamps = await Bootcamp.findAll({
+      order: [['id', 'ASC']],
       include: {
         model: User,
         through: { attributes: [] },
@@ -15,7 +16,7 @@ BootcampController.getAllBootcamps = async (req, res, next) => {
     return res.status(200).json(bootcamps);
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ message: 'Internal Server Error' });
+    next(error)
   }
 };
 
@@ -26,7 +27,7 @@ BootcampController.createBootcamp = async (req, res, next) => {
     res.status(201).json(bootcamp);
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ message: 'Internal Server Error' });
+    next(error)
   }
 };
 
@@ -52,7 +53,7 @@ BootcampController.addUser = async (req, res, next) => {
     });
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ message: 'Internal Server Error' });
+    next(error)
   }
 };
 
@@ -71,7 +72,7 @@ BootcampController.findBootcampbyId = async (req, res, next) => {
     res.json(bootcamp);
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ message: 'Internal Server Error' });
+    next(error)
   }
 };
 

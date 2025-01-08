@@ -21,17 +21,17 @@ UsersController.getAllUsers = async (req, res, next) => {
   }
 };
 
-UsersController.createUser = async (req, res, next) => {
-  const data = req.body;
-  console.log(data);
-  try {
-    const user = await User.create(data);
-    return res.json(user);
-  } catch (error) {
-    console.error(error);
-    return res.status(500).json({ message: 'Internal Server Error' });
-  }
-};
+// UsersController.createUser = async (req, res, next) => {
+//   const data = req.body;
+//   console.log(data);
+//   try {
+//     const user = await User.create(data);
+//     return res.json(user);
+//   } catch (error) {
+//     console.error(error);
+//     return res.status(500).json({ message: 'Internal Server Error' });
+//   }
+// };
 
 UsersController.findUserById = async (req, res, next) => {
   const id = req.params.id;
@@ -46,7 +46,7 @@ UsersController.findUserById = async (req, res, next) => {
     res.json(user);
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ message: 'Internal Server Error' });
+    next(error)
   }
 };
 
@@ -62,7 +62,7 @@ UsersController.updateUserById = async (req, res, next) => {
     return res.json(user);
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ message: 'Internal Server Error' });
+    next(error)
   }
 };
 
@@ -77,7 +77,7 @@ UsersController.deleteUserById = async (req, res, next) => {
     return res.json({ message: 'Usuario eliminado' });
   } catch (error) {
     console.error(error);
-    return res.status(500).json({ message: 'Internal Server Error' });
+    next(error)
   }
 };
 

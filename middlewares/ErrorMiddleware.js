@@ -1,0 +1,53 @@
+const { ValidationError, UniqueConstraintError } = require("sequelize");
+
+const errorHandler = async (err, req, res, next) => {
+    if (err instanceof UniqueConstraintError) {
+        const { errors } = err
+        if (errors.length > 0) {
+            /**
+         * en caso de correr la Api em S.O Linux
+         */
+            errors.forEach((error) => {
+                delete error.instance
+                delete error.validatorKey
+                delete error.origin
+                delete error.type
+                delete error.validatorName
+                delete error.validatorArgs
+                delete error.path
+            })
+            return res.status(409).json(errors)
+
+        }
+
+        // Caso de servidor Windows
+
+        const message = err.parent?.detail
+
+        return res.status(409).json({ message })
+
+    }
+
+    if (err instanceof ValidationError) {
+        const { errors } = err
+
+        const errorMessages = errors.map(({ path, message }) => ({
+            [path]: message,
+        }));
+
+        return res.status(400).json(errorMessages)
+
+    }
+
+    if (err?.cause == "INVALID_CREDENTIALS") {
+        return res.status(401).json({ message: err.message })
+    }
+
+    return res.status(500).json({ message: "Internal Server Error" })
+
+
+}
+
+module.exports = {
+    errorHandler
+}

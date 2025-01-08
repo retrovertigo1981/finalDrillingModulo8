@@ -1,5 +1,5 @@
 
-# Final Drilling Módulo 7
+# Final Drilling Módulo 8
 
 Este proyecto corresponde al trabajo final del Módulo 7 del Bootcamp de Desarrollo FullStack JavaScript de Talento Digital.
 

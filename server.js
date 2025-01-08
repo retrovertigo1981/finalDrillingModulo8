@@ -1,14 +1,20 @@
 const express = require('express');
 const app = express();
-const { UserRouter, BootcampRouter } = require('./routes/index.routes.js');
+const cookieParser = require("cookie-parser")
+const { UserRouter, BootcampRouter, SessionRouter } = require('./routes/index.routes.js');
+const { errorHandler } = require("./middlewares")
 
 const PORT = process.env.PORT || 3000;
 
+app.use(cookieParser())
 app.use(express.json());
 
 // Rutas
-app.use('/usuarios', UserRouter);
-app.use('/bootcamps', BootcampRouter);
+app.use('/api/usuarios', UserRouter);
+app.use('/api/bootcamps', BootcampRouter);
+app.use('/api/', SessionRouter);
+
+app.use(errorHandler);
 
 // Inicio del servidor
 app.listen(PORT, () => {
