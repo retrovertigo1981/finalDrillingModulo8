@@ -7,4 +7,4 @@ router.post('/signup', SessionController.createUser);
 
 module.exports = {
     SessionRouter: router,
-}
+}   
